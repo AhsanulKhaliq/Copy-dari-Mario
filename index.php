@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header style="background-color: #B6C4B6;">
+    <header style="background-color: #B6C4B6;font-family: Montserrat;">
     <nav class="navbar container">
             <a class="navbar-brand" href="index.php?p=home">Projek Akhir</a>
             <div class="d-flex align-middle">
@@ -41,7 +44,7 @@
     }
     ?>
     </main>
-    <footer class="fixed-bottom" style="background-color: #B6C4B6;">
+    <footer class="fixed-bottom" style="background-color: #B6C4B6;font-family: Montserrat;">
     <div class="container">
             <p>Menara 165 Lantai 18, Jl. TB. Simatupang, 12560, Jakarta Selatan, DKI Jakarta</p>
             <p>+62-1234-5678</p>
