@@ -1,1 +1,1 @@
-<h1>Home</h1>
+<img src="/assets/home.jpg" class="rounded img-fluid">
