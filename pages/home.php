@@ -1,9 +1,9 @@
-<img src="assets/home.jpg" class="mt-2 rounded mx-auto d-block" alt="Masjid" style="width:auto;height:400px;">
+<img src="assets/home.jpg" class="mt-2 rounded mx-auto d-sm-none d-lg-block" alt="Masjid" style="width:auto;height:400px;">
 <hr>
 <div style="font-family: Montserrat">
 <h1>Membumikan <strong style="color:#163020">Al-Qur'an</strong>,</h1>
 <h1>Melangitkan <strong style="color:#163020">Akhlaq</strong></h1>
-<div class="row">
+<div class="row d-flex flex-sm-column flex-lg-row ">
     <div class="col">
         <h2>Visi</h2>
         <ul>
