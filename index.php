@@ -21,6 +21,7 @@
             </div>
     </nav>        
     </header>
+    <br>
     <main class="container">
     <?php
     $pages_dir = 'pages';
@@ -44,7 +45,8 @@
     }
     ?>
     </main>
-    <footer class="fixed-bottom" style="background-color: #B6C4B6;font-family: Montserrat;">
+    <br>
+    <footer class="sticky-bottom" style="background-color: #B6C4B6; font-family: Montserrat;">
     <div class="container">
             <p>Menara 165 Lantai 18, Jl. TB. Simatupang, 12560, Jakarta Selatan, DKI Jakarta</p>
             <p>+62-1234-5678</p>
