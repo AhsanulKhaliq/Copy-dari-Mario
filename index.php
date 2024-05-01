@@ -26,8 +26,8 @@
     ?>
     </main>
 
-    <?php
+<?php
 
     include("footer.php");
 
-    ?>
+?>

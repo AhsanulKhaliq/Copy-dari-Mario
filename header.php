@@ -12,7 +12,7 @@
 <body>
     <header style="background-color: #B6C4B6;font-family: Montserrat;">
     <nav class="navbar container">
-            <a class="navbar-brand" href="index.php?p=home">Projek Akhir</a>
+            <a class="navbar-brand" href="index.php?p=home">Darul Taqwa</a>
             <div class="d-flex align-middle">
                 <a class="nav-link m-2" href="index.php?p=fasilitas">Fasilitas</a>
                 <a class="nav-link m-2" href="index.php?p=berita">Berita</a>
