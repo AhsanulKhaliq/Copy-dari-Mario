@@ -9,4 +9,5 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="cancel" class="btn btn-primary">Cancel</button>
 </form>
