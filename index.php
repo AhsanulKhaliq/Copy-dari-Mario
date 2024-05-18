@@ -1,6 +1,7 @@
 <?php
 
     include("header.php");
+    require("koneksi.php")
 
 ?>
     <?php
