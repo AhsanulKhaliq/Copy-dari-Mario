@@ -4,12 +4,12 @@
     {
         private $id_santri ='';
         private $s_fullName ='';
-        private $pendidikanSantri = '';
         private $tlSantri = '';
         private $s_BOD = '';
         private $s_address = '';
         private $fotoSantri = '';
-
+        
+        private $pendidikanSantri = '';
         private $emailWali = '';
         private $kontakWali = '';
         private $nikSantri = '';
@@ -41,31 +41,16 @@
         {
             $sql = "INSERT INTO santri(id_santri, 
                                     s_fullName, 
-                                    p_lastSchool, 
                                     s_bodPlace, 
                                     s_BOD, 
                                     s_address, 
-                                    s_photo, 
-                                    id_santri, 
-                                    id_familyRegist, 
-                                    w_fullName, 
-                                    w_email,
-                                    w_phone, 
-                                    w_job, 
-                                    w_salary)
-                                VALUES('$this->s_fullName',
-                                '$this->pendidikanSantri',
+                                    s_photo,)
+                                VALUES(,
+                                '$this->s_fullName',
                                 '$this->tlSantri',
                                 '$this->s_BOD',
                                 '$this->s_address',
-                                '$this->fotoSantri',
-                                '$this->nikSantri',
-                                '$this->kkSantri',
-                                '$this->namaWali',
-                                '$this->emailWali',
-                                '$this->kontakWali',
-                                '$this->pekerjaanWali',
-                                '$this->penghasilanWali')";
+                                '$this->fotoSantri')";
 
             $this->hasil = mysqli_query($this->connection, $sql);
 
