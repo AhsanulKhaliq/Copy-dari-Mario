@@ -22,22 +22,12 @@ if(isset($_POST['btnSubmit'])){
         $santri->SelectOneSantri();
     }
 ?>
-<h2>Biodata Santri</h2>
+<h2>Biodata Calon Santri</h2>
 <form class="form-group" action="" method="post">
   <div class="row">
     <div class="col-sm">
       <label for="inputNama" class="form-label">Nama Lengkap</label>
       <input type="text" class="form-control" placeholder="Nama sesuai dengan Ijazah terakhir" name="inputNama">
-    </div>
-
-    <div class="col-sm">
-      <label for="selectSekolah" class="form-label">Pendidikan Terakhir</label>
-      <select class="form-select" aria-label="Default select example" name="pendidikanSantri">
-        <option selected>Pilih Pendidikan Terakhir</option>
-        <option value="SD/MI">Sekolah Dasar/Madrasah Ibtidaiyah</option>
-        <option value="SMP/MTs">Sekolah Menengah Pertama/Madrasah Tsanawiyah</option>
-        <option value="SMA/MA">Sekolah Menengah Atas/Madrasah Aliyah</option>
-      </select>
     </div>
   </div>
 
@@ -48,7 +38,7 @@ if(isset($_POST['btnSubmit'])){
     </div>
 
     <div class="col-sm">
-      <label for="inputTanggalLahir">Tanggal Lahir</label>
+      <label for="inputTanggalLahir" class="form-label">Tanggal Lahir</label>
       <input type="date" class="form-control" id="inputTanggalLahir" name="tanggal">
     </div>
   </div>
@@ -64,43 +54,26 @@ if(isset($_POST['btnSubmit'])){
       <input class="form-control" type="file" id="pasFoto" style="height: 100px" name="s_photo">
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-sm">
-      <label for="inputEmail" class="form-label">Email</label>
-      <input type="email" class="form-control" name="w_email" placeholder="@example.com (Boleh memakai Email Wali)">
-    </div>
 
-    <div class="col-sm">
-      <label for="inputKontak">Nomor Kontak:</label>
-      <input type="tel" class="form-control" id="inputKontak" name="w_phone" placeholder="Masukkan nomor kontak Anda" pattern="[0-9]{10,12}" minlength="10" maxlength="12">
-      <small id="nomorKontak" class="form-text text-muted">Harus terdiri dari 10-12 digit angka.</small>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm">
-      <label for="inputNik">Nomor Induk Kependudukan:</label>
-      <input type="tel" class="form-control" id="inputNik" name="nomorNik" placeholder="Masukkan Induk Kependudukan Anda" pattern="[0-9]" minlength="15" maxlength="16">
-      <small id="nomorKontak" class="form-text text-muted">Harus terdiri dari 16 digit angka.</small>
-    </div>
-
-    <div class="col-sm">
-      <label for="fileKK" class="form-label">Upload Kartu Keluarga</label>
-      <input class="form-control" type="file" name="w_familyRegist" style="height: 100px">
-    </div>
-  </div>
+  <hr>
+  <h3>Wali Calon Santri</h3>
 
   <div class="row">
     <div class="col-sm">
       <label for="inputNamaWali" class="form-label">Nama Lengkap Wali</label>
       <input type="text" class="form-control" placeholder="Nama sesuai dengan Kartu Tanda Penduduk" name="w_fullName">
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <label for="inputEmail" class="form-label">Email</label>
+      <input type="email" class="form-control" name="w_email" placeholder="Masukkan email wali">
+    </div>
 
     <div class="col-sm">
-      <label for="inputKontakWali">Nomor Kontak Wali</label>
-      <input type="tel" class="form-control" id="nomor" name="w_phone" placeholder="Masukkan nomor kontak Wali Anda" pattern="[0-9]{10,12}" minlength="10" maxlength="12">
-      <small id="nomorKontakWali" class="form-text text-muted">Harus terdiri dari 10-12 digit angka.</small>
+      <label for="inputKontak" class="form-label">Nomor Kontak</label>
+      <input type="tel" class="form-control" id="inputKontak" name="w_phone" placeholder="Masukkan nomor kontak wali" pattern="[0-9]{10,12}" minlength="10" maxlength="12">
     </div>
   </div>
 
@@ -136,10 +109,44 @@ if(isset($_POST['btnSubmit'])){
       </select>
     </div>
   </div>
+  
+  <div class="row">
+    <div class="col-sm">
+      <label for="fileKK" class="form-label">Upload Kartu Keluarga</label>
+      <input class="form-control" type="file" name="w_familyRegist" style="height: 100px">
+    </div>
+  </div>
+  
+  <hr>
+  <h3>Pendidikan Calon Santri</h3>
+  <div class="row">
+    <div class="col-sm">
+      <label for="selectSekolah" class="form-label">Pendidikan Terakhir</label>
+      <select class="form-select" aria-label="Default select example" name="pendidikanSantri">
+        <option selected>Pilih Pendidikan Terakhir</option>
+        <option value="SD/MI">Sekolah Dasar/Madrasah Ibtidaiyah</option>
+        <option value="SMP/MTs">Sekolah Menengah Pertama/Madrasah Tsanawiyah</option>
+        <option value="SMA/MA">Sekolah Menengah Atas/Madrasah Aliyah</option>
+      </select>
+    </div>
+  </div>
 
-  <div class="col-sm">
-  <input type="submit" class="btn btn-success" value="Daftar" name="btnSubmit">
-  <a href="index.php" class="btn btn-warning">Kembali</a>
+  <div class="row">
+    <div class="col-sm">
+      <label for="p_certificate" class="form-label">Upload Ijazah Terakhir</label>
+      <input class="form-control" type="file" name="p_certificate" style="height: 100px">
+    </div>
+    <div class="col-sm">
+      <label for="p_transcript" class="form-label">Upload Transkrip Nilai</label>
+      <input class="form-control" type="file" name="p_transcript" style="height: 100px">
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="column">
+      <input type="submit" class="btn btn-success" value="Daftar" name="btnSubmit">
+      <a href="index.php" class="btn btn-warning">Kembali</a>
+    </div>
   </div>
 </form>
 
