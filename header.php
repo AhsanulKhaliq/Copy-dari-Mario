@@ -16,8 +16,10 @@
             <div class="d-flex align-middle">
                 <a class="nav-link m-2" href="index.php?p=fasilitas">Fasilitas</a>
                 <a class="nav-link m-2" href="index.php?p=berita">Berita</a>
-                <a class="nav-link m-2" href="index.php?p=berita">Ekstrakurikuler</a>
-                <a class="nav-link m-2" href="index.php?p=berita">Profil</a>
+                <a class="nav-link m-2" href="index.php?p=eskul">Ekstrakurikuler</a>
+                <a class="nav-link m-2" href="index.php?p=profil">Profil</a>
+                <a class="nav-link m-2" href="index.php?p=biayapendaftaran">Biaya Pendaftaran</a>
+
 
                 <a class="nav-btn btn m-1" style="background-color: #163020; color:#B6C4B6"; href="index.php?p=santri">Pendaftaran</a>
                 <a class="nav-btn btn m-1" style="background-color: #163020; color:#B6C4B6"; href="index.php?p=admin">Login</a>
