@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Rincian Biaya Pendidikan</title>
-    <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
     <div class="container">
