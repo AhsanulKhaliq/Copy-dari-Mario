@@ -7,16 +7,16 @@
         private $tlSantri = '';
         private $s_BOD = '';
         private $s_address = '';
-        private $fotoSantri = '';
+        private $s_photo = '';
         
         private $pendidikanSantri = '';
-        private $emailWali = '';
-        private $kontakWali = '';
+        private $w_email = '';
+        private $w_phone = '';
         private $nikSantri = '';
-        private $kkSantri = '';
-        private $namaWali = '';
-        private $pekerjaanWali = '';
-        private $penghasilanWali = '';
+        private $w_familyRegist = '';
+        private $w_fullName = '';
+        private $pekerjaan = '';
+        private $penghasilan = '';
         
         public $hasil = false;
         public $message = 'Silahkan memasukkan data yang valid!';
@@ -40,17 +40,13 @@
         public function tambahSantri()
         {
             $sql = "INSERT INTO santri(id_santri, 
-                                    s_fullName, 
-                                    s_bodPlace, 
+                                    s_fullName,  
                                     s_BOD, 
-                                    s_address, 
-                                    s_photo,)
-                                VALUES(,
+                                    s_address)
+                                VALUES(NULL,
                                 '$this->s_fullName',
-                                '$this->tlSantri',
                                 '$this->s_BOD',
-                                '$this->s_address',
-                                '$this->fotoSantri')";
+                                '$this->s_address')";
 
             $this->hasil = mysqli_query($this->connection, $sql);
 
