@@ -21,6 +21,8 @@
                 <a class="nav-link m-2" href="index.php?p=biayapendaftaran">Biaya Pendaftaran</a>
 
 
+
+
                 <a class="nav-btn btn m-1" style="background-color: #163020; color:#B6C4B6"; href="index.php?p=santri">Pendaftaran</a>
                 <a class="nav-btn btn m-1" style="background-color: #163020; color:#B6C4B6"; href="index.php?p=admin">Login</a>
             </div>
