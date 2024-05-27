@@ -4,31 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biaya Pendaftaran Santri Baru</title>
-    <style>
-        table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #B6C4B6;
-            color: white;
-        }
-        .notes {
-            background-color: #B6C4B6;
-        }
-    </style>
 </head>
 <body>
     <h1>Biaya Pendaftaran Santri Baru</h1>
-
+    <br>
     <h2>A. Biaya Administrasi Pendaftaran</h2>
-    <table>
+    <table class="table table-striped">
         <tr>
             <th>NO</th>
             <th>JENIS BIAYA</th>
@@ -42,17 +23,16 @@
             <td>Rp 125.000</td>
         </tr>
     </table>
-    <div class="notes">
+    <div class="p-3 bg-primary-subtle border rounded-3" style="background-color: #B6C4B6;">
         <p>Catatan:</p>
         <p>1. Pendaftar Online: Setelah membuat akun pendaftaran, calon santri harus membayar biaya Administrasi Pendaftaran sebelum dapat bisa mengisi formulir.</p>
         <p>2. Pendaftar offline membayar biaya Administrasi Pendaftaran di pondok sebelum masuk ke ruang pengisian formulir.</p>
         <p>3. Pembayaran tidak dapat dicicil.</p>
         <p>4. Siswa yang mengundurkan diri setelah pendaftaran, tidak dapat mengambil uang pendaftaran yang telah dibayarkan.</p>
-    
     </div>
-
+    <br>
     <h2>B. Biaya Pendaftaran Ulang</h2>
-    <table>
+    <table class="table table-striped">
         <tr>
             <th>NO</th>
             <th>JENIS BIAYA</th>
@@ -98,12 +78,5 @@
             <th>Rp <?php echo number_format($total_ma, 0, ',', '.'); ?></th>
         </tr>
     </table>
-
-   
-    
-
-</body>
-</html>
-
 </body>
 </html>
