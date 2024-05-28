@@ -4,7 +4,7 @@
     {
         private $id_santri ='';
         private $s_fullName ='';
-        private $tlSantri = '';
+        private $s_bodPlace = '';
         private $s_BOD = '';
         private $s_address = '';
         private $s_photo = '';
@@ -13,8 +13,8 @@
         private $w_phone = '';
         private $w_familyRegist = '';
         private $w_fullName = '';
-        private $pekerjaan = '';
-        private $penghasilan = '';
+        private $w_job = '';
+        private $w_salary = '';
 
         private $p_lastSchool = '';
         private $p_certificate = '';
@@ -42,12 +42,15 @@
         public function tambahSantri()
         {
             $sql = "INSERT INTO santri(id_santri, 
-                                    s_fullName,  
+                                    s_fullName, 
+                                    s_bodPlace 
                                     s_BOD, 
+                                    s_bodPlace, 
                                     s_address,
                                     s_photo)
                                 VALUES('$this->id_santri',
                                 '$this->s_fullName',
+                                '$this->s_bodPlace',
                                 '$this->s_BOD',
                                 '$this->s_address',
                                 '$this->s_photo')";
@@ -68,14 +71,19 @@
                                     w_address,
                                     w_phone,
                                     w_email,
-                                    w_familyRegist)
+                                    w_familyRegist,
+                                    w_job,
+                                    w_salary)
                                 VALUES(NULL,
                                 '$this->id_santri',
                                 '$this->w_fullName',
                                 '$this->s_address',
                                 '$this->w_phone',
                                 '$this->w_email',
-                                '$this->w_familyRegist')";
+                                '$this->w_familyRegist',
+                                '$this->w_job',
+                                '$this->w_salary',
+                                )";
             
             $this->hasil = mysqli_query($this->connection, $sql2);
 
@@ -172,6 +180,7 @@
                     $data= mysqli_fetch_assoc($resultOne);
                     $this->s_fullName = $data['s_fullName'];
                     $this->s_address = $data['s_address'];
+                    $this->s_bodPlace = $data['s_bodPlace'];
                     $this->s_BOD = $data['s_BOD'];
                     $this->s_photo = $data['s_photo'];
 
@@ -179,6 +188,8 @@
                     $this->w_email = $data['w_email'];
                     $this->w_phone = $data['w_phone'];
                     $this->w_familyRegist = $data['w_familyRegist'];
+                    $this->w_job = $data['w_job'];
+                    $this->w_salary = $data['w_salary'];
 
                     $this->p_lastSchool = $data['p_lastSchool'];
                     $this->p_certificate = $data['p_certificate'];
