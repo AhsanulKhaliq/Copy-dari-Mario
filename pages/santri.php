@@ -2,10 +2,20 @@
 require_once('./class/class.Santri.php');
 $santri = new Santri();
 if(isset($_POST['btnSubmit'])){
-    $santri->id_santri = $_POST[NULL];
+    $santri->id_santri = $_POST['id_santri'];
     $santri->s_fullName = $_POST['inputNama'];
     $santri->s_BOD = $_POST['tanggal'];
     $santri->s_address = $_POST['inputAlamat'];
+    $santri->s_photo = $_POST['s_photo'];
+
+    $santri->w_fullName = $_POST['w_fullName'];
+    $santri->w_phone = $_POST['w_phone'];
+    $santri->w_email = $_POST['w_email'];
+    $santri->w_familyRegist = $_POST['w_familyRegist'];
+    
+    $santri->p_lastSchool = $_POST['p_lastSchool'];
+    $santri->p_certificate = $_POST['p_certificate'];
+    $santri->p_transcript = $_POST['p_transcript'];
 
     if(isset($_GET['id_santri'])){
         $santri->id_santri = $_GET['id_santri'];
@@ -17,8 +27,8 @@ if(isset($_POST['btnSubmit'])){
     if($santri->hasil){
         echo '<script> window.location = "index.php?p=listSantri";</script>';
     }
-} else if (isset($_GET['ssn'])){
-        $santri->ssn = $_GET['ssn'];
+} else if (isset($_GET['id_santri'])){
+        $santri->ssn = $_GET['id_santri'];
         $santri->SelectOneSantri();
     }
 ?>
@@ -28,6 +38,10 @@ if(isset($_POST['btnSubmit'])){
     <div class="col-sm">
       <label for="inputNama" class="form-label">Nama Lengkap</label>
       <input type="text" class="form-control" placeholder="Nama sesuai dengan Ijazah terakhir" name="inputNama">
+    </div>
+    <div class="col-sm">
+      <label for="id_santri" class="form-label">Nomor Induk Siswa Nasional</label>
+      <input type="text" class="form-control" placeholder="NISN" name="id_santri">
     </div>
   </div>
 
@@ -122,7 +136,7 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="selectSekolah" class="form-label">Pendidikan Terakhir</label>
-      <select class="form-select" aria-label="Default select example" name="pendidikanSantri">
+      <select class="form-select" aria-label="Default select example" name="p_lastSchool">
         <option selected>Pilih Pendidikan Terakhir</option>
         <option value="SD/MI">Sekolah Dasar/Madrasah Ibtidaiyah</option>
         <option value="SMP/MTs">Sekolah Menengah Pertama/Madrasah Tsanawiyah</option>

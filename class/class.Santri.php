@@ -9,14 +9,16 @@
         private $s_address = '';
         private $s_photo = '';
         
-        private $pendidikanSantri = '';
         private $w_email = '';
         private $w_phone = '';
-        private $nikSantri = '';
         private $w_familyRegist = '';
         private $w_fullName = '';
         private $pekerjaan = '';
         private $penghasilan = '';
+
+        private $p_lastSchool = '';
+        private $p_certificate = '';
+        private $p_transcript = '';
         
         public $hasil = false;
         public $message = 'Silahkan memasukkan data yang valid!';
@@ -42,13 +44,62 @@
             $sql = "INSERT INTO santri(id_santri, 
                                     s_fullName,  
                                     s_BOD, 
-                                    s_address)
-                                VALUES(NULL,
+                                    s_address,
+                                    s_photo)
+                                VALUES('$this->id_santri',
                                 '$this->s_fullName',
                                 '$this->s_BOD',
-                                '$this->s_address')";
+                                '$this->s_address',
+                                '$this->s_photo')";
 
             $this->hasil = mysqli_query($this->connection, $sql);
+
+            if ($this->hasil) 
+            {
+                $this->message = 'Data berhasil ditambahkan!';
+            }
+            else
+            {
+                $this->message = 'Data gagal ditambahkan!';
+            }
+            $sql2 = "INSERT INTO wali(id_wali,
+                                    id_santri,
+                                    w_fullName,
+                                    w_address,
+                                    w_phone,
+                                    w_email,
+                                    w_familyRegist)
+                                VALUES(NULL,
+                                '$this->id_santri',
+                                '$this->w_fullName',
+                                '$this->s_address',
+                                '$this->w_phone',
+                                '$this->w_email',
+                                '$this->w_familyRegist')";
+            
+            $this->hasil = mysqli_query($this->connection, $sql2);
+
+            if ($this->hasil) 
+            {
+                $this->message = 'Data berhasil ditambahkan!';
+            }
+            else
+            {
+                $this->message = 'Data gagal ditambahkan!';
+            }
+
+            $sql3 = "INSERT INTO pendidikan(id_pendidikan,
+                                    id_santri,
+                                    p_lastSchool,
+                                    p_certificate,
+                                    p_transcript)
+                                VALUES(NULL,
+                                '$this->id_santri',
+                                '$this->p_lastSchool',
+                                '$this->p_certificate',
+                                '$this->p_transcript')";
+            
+            $this->hasil = mysqli_query($this->connection, $sql3);
 
             if ($this->hasil) 
             {
@@ -119,8 +170,19 @@
             {
                     $this->hasil = true;
                     $data= mysqli_fetch_assoc($resultOne);
-                    $this->fname = $data['fname'];
-                    $this->address = $data['address'];
+                    $this->s_fullName = $data['s_fullName'];
+                    $this->s_address = $data['s_address'];
+                    $this->s_BOD = $data['s_BOD'];
+                    $this->s_photo = $data['s_photo'];
+
+                    $this->w_fullName = $data['w_fullName'];
+                    $this->w_email = $data['w_email'];
+                    $this->w_phone = $data['w_phone'];
+                    $this->w_familyRegist = $data['w_familyRegist'];
+
+                    $this->p_lastSchool = $data['p_lastSchool'];
+                    $this->p_certificate = $data['p_certificate'];
+                    $this->p_transcript = $data['p_transcript'];
             }
         }
     }

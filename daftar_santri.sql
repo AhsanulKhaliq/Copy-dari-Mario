@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2024 at 07:05 PM
+-- Generation Time: May 28, 2024 at 05:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,6 +57,7 @@ CREATE TABLE `guru` (
 
 CREATE TABLE `pendidikan` (
   `id_pendidikan` int(10) NOT NULL,
+  `id_santri` int(10) NOT NULL,
   `p_certificate` mediumblob NOT NULL,
   `p_transcript` mediumblob NOT NULL,
   `p_lastSchool` char(50) NOT NULL
@@ -72,10 +73,8 @@ CREATE TABLE `santri` (
   `id_santri` int(10) NOT NULL,
   `s_fullName` char(50) NOT NULL,
   `s_BOD` date NOT NULL,
-  `s_photo` mediumblob NOT NULL,
-  `s_address` char(50) NOT NULL,
-  `id_wali` int(10) NOT NULL,
-  `id_pendidikan` int(10) NOT NULL
+  `s_photo` mediumblob DEFAULT NULL,
+  `s_address` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,6 +85,7 @@ CREATE TABLE `santri` (
 
 CREATE TABLE `wali` (
   `id_wali` int(10) NOT NULL,
+  `id_santri` int(10) NOT NULL,
   `w_fullName` char(50) NOT NULL,
   `w_phone` char(14) NOT NULL,
   `w_email` char(20) NOT NULL,
@@ -113,32 +113,53 @@ ALTER TABLE `guru`
 -- Indexes for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
-  ADD PRIMARY KEY (`id_pendidikan`);
+  ADD PRIMARY KEY (`id_pendidikan`),
+  ADD KEY `pendidikan_ibfk_1` (`id_santri`);
 
 --
 -- Indexes for table `santri`
 --
 ALTER TABLE `santri`
-  ADD PRIMARY KEY (`id_santri`),
-  ADD KEY `id_wali` (`id_wali`),
-  ADD KEY `id_pendidikan` (`id_pendidikan`);
+  ADD PRIMARY KEY (`id_santri`);
 
 --
 -- Indexes for table `wali`
 --
 ALTER TABLE `wali`
-  ADD PRIMARY KEY (`id_wali`);
+  ADD PRIMARY KEY (`id_wali`),
+  ADD KEY `wali_ibfk_1` (`id_santri`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pendidikan`
+--
+ALTER TABLE `pendidikan`
+  MODIFY `id_pendidikan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wali`
+--
+ALTER TABLE `wali`
+  MODIFY `id_wali` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `santri`
+-- Constraints for table `pendidikan`
 --
-ALTER TABLE `santri`
-  ADD CONSTRAINT `santri_ibfk_1` FOREIGN KEY (`id_wali`) REFERENCES `wali` (`id_wali`),
-  ADD CONSTRAINT `santri_ibfk_2` FOREIGN KEY (`id_pendidikan`) REFERENCES `pendidikan` (`id_pendidikan`);
+ALTER TABLE `pendidikan`
+  ADD CONSTRAINT `pendidikan_ibfk_1` FOREIGN KEY (`id_santri`) REFERENCES `santri` (`id_santri`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wali`
+--
+ALTER TABLE `wali`
+  ADD CONSTRAINT `wali_ibfk_1` FOREIGN KEY (`id_santri`) REFERENCES `santri` (`id_santri`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
