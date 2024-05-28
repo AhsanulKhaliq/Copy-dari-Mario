@@ -3,15 +3,19 @@ require_once('./class/class.Santri.php');
 $santri = new Santri();
 if(isset($_POST['btnSubmit'])){
     $santri->id_santri = $_POST['id_santri'];
-    $santri->s_fullName = $_POST['inputNama'];
-    $santri->s_BOD = $_POST['tanggal'];
-    $santri->s_address = $_POST['inputAlamat'];
+    $santri->s_fullName = $_POST['s_fullName'];
+    $santri->s_bodPlace = $_POST['s_bodPlace'];
+    $santri->s_BOD = $_POST['s_BOD'];
+    $santri->s_address = $_POST['s_address'];
     $santri->s_photo = $_POST['s_photo'];
 
+    $santri->id_wali = $_POST['id_wali'];
     $santri->w_fullName = $_POST['w_fullName'];
     $santri->w_phone = $_POST['w_phone'];
     $santri->w_email = $_POST['w_email'];
     $santri->w_familyRegist = $_POST['w_familyRegist'];
+    $santri->w_job = $_POST['w_job'];
+    $santri->w_salary = $_POST['w_salary'];
     
     $santri->p_lastSchool = $_POST['p_lastSchool'];
     $santri->p_certificate = $_POST['p_certificate'];
@@ -37,7 +41,7 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="inputNama" class="form-label">Nama Lengkap</label>
-      <input type="text" class="form-control" placeholder="Nama sesuai dengan Ijazah terakhir" name="inputNama">
+      <input type="text" class="form-control" placeholder="Nama sesuai dengan Ijazah terakhir" name="s_fullName">
     </div>
     <div class="col-sm">
       <label for="id_santri" class="form-label">Nomor Induk Siswa Nasional</label>
@@ -48,19 +52,19 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="inputTempatLahir" class="form-label">Tempat Lahir</label>
-      <input type="text" class="form-control" name="tLahir">
+      <input type="text" class="form-control" name="s_bodPlace">
     </div>
 
     <div class="col-sm">
       <label for="inputTanggalLahir" class="form-label">Tanggal Lahir</label>
-      <input type="date" class="form-control" id="inputTanggalLahir" name="tanggal">
+      <input type="date" class="form-control" id="inputTanggalLahir" name="s_BOD">
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <label for="inputAlamat" class="form-label">Alamat Lengkap</label>
-      <input type="text" class="form-control" name="inputAlamat" placeholder="Sesuai Kartu Keluarga" style="height: 100px">
+      <input type="text" class="form-control" name="s_address" placeholder="Sesuai Kartu Keluarga" style="height: 100px">
     </div>
 
     <div class="col-md-6">
@@ -71,6 +75,13 @@ if(isset($_POST['btnSubmit'])){
 
   <hr>
   <h3>Wali Calon Santri</h3>
+  
+  <div class="row">
+  <div class="col-sm">
+      <label for="inputNikWali" class="form-label">Nomor Induk Kependudukan</label>
+      <input type="text" class="form-control" placeholder="NIK" name="id_wali">
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-sm">
@@ -94,7 +105,7 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="pekerjaan">Pekerjaan Wali</label>
-      <select class="form-control" name="pekerjaan" onchange="showInput(this)">
+      <select class="form-control" name="w_job" onchange="showInput(this)">
         <option value="pilihKerja">Pilih Pekerjaan</option>
         <option value="Wiraswasta">Wiraswasta</option>
         <option value="Petani">Petani</option>
@@ -113,7 +124,7 @@ if(isset($_POST['btnSubmit'])){
 
     <div class="col-sm">
       <label for="penghasilan">Penghasilan Wali</label>
-      <select class="form-control" name="penghasilan">
+      <select class="form-control" name="w_salary">
         <option value="pilihGaji">Pilih Penghasilan Wali</option>
         <option value="1">'<'Rp. 500.000</option>
         <option value="1">Rp. 500.000 - Rp. 1.000.000</option>
