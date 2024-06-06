@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2024 at 05:50 AM
+-- Generation Time: Jun 06, 2024 at 01:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,6 +63,17 @@ CREATE TABLE `pendidikan` (
   `p_lastSchool` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `pendidikan`
+--
+
+INSERT INTO `pendidikan` (`id_pendidikan`, `id_santri`, `p_certificate`, `p_transcript`, `p_lastSchool`) VALUES
+(7, 1, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'SD/MI'),
+(8, 2, 0x666c7965722073656d696e61722e706e67, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'SMP/MTs'),
+(9, 3, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'SMP/MTs'),
+(10, 5, 0x706578656c732d746563686e6f62756c6b612d323930393236312e6a7067, 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'SD/MI'),
+(981288789, 882102032, 0x666c7965722073656d696e61722e706e67, 0x666c7965722073656d696e61722e706e67, 'SD/MI');
+
 -- --------------------------------------------------------
 
 --
@@ -72,10 +83,22 @@ CREATE TABLE `pendidikan` (
 CREATE TABLE `santri` (
   `id_santri` int(10) NOT NULL,
   `s_fullName` char(50) NOT NULL,
+  `s_bodPlace` char(20) NOT NULL,
   `s_BOD` date NOT NULL,
   `s_photo` mediumblob DEFAULT NULL,
   `s_address` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `santri`
+--
+
+INSERT INTO `santri` (`id_santri`, `s_fullName`, `s_bodPlace`, `s_BOD`, `s_photo`, `s_address`) VALUES
+(1, 'Michael Abdul Normaginunov', 'Azerbaijan', '2001-09-11', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'Middle East'),
+(2, 'Mossa Eulem', 'Egypt', '2001-08-09', 0x706578656c732d746563686e6f62756c6b612d323930393236312e6a7067, 'Cairo'),
+(3, 'Yaya', 'Perut Abbas', '2001-09-11', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'Bone'),
+(5, 'Athaya', 'Bone', '2001-09-11', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'Wajo'),
+(882102032, 'Patlamaya Devam', 'Turki', '2004-12-24', 0x466c7965722050656d61746572692052657265766973692e706e67, 'Turki');
 
 -- --------------------------------------------------------
 
@@ -90,8 +113,21 @@ CREATE TABLE `wali` (
   `w_phone` char(14) NOT NULL,
   `w_email` char(20) NOT NULL,
   `w_address` char(50) NOT NULL,
-  `w_familyRegist` mediumblob NOT NULL
+  `w_familyRegist` mediumblob NOT NULL,
+  `w_job` char(20) NOT NULL,
+  `w_salary` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wali`
+--
+
+INSERT INTO `wali` (`id_wali`, `id_santri`, `w_fullName`, `w_phone`, `w_email`, `w_address`, `w_familyRegist`, `w_job`, `w_salary`) VALUES
+(909090909, 3, 'Abbas', '123412341234', 'abbas@gmail.com', 'Bone', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'Polisi', 'Rp. 1.000.000 - Rp. 2.000.000'),
+(987654321, 5, 'BabaTaya', '890723753856', 'taya@gmail.com', 'Wajo', 0x706578656c732d746563686e6f62756c6b612d323930393236312e6a7067, 'Petani', 'Rp. 500.000 - Rp. 1.000.000'),
+(1133335555, 2, 'Eulem Pots', '098678345221', 'eulpts@gmail.com', 'Cairo', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'PNS', 'Rp. 1.000.000 - Rp. 2.000.000'),
+(1231231231, 1, 'Abdul Sayem Normaginunov', '573478231980', 'm1ch43l@miskha.ru', 'Middle East', 0x37313536313138325f66696e6765727072696e74207472696c6c77617665207061747465726e2e6a7067, 'Tentara', '> Rp. 3.000.000'),
+(2147483647, 882102032, 'Babam Devam', '123103987235', 'babam@gmail.com', 'Turki', 0x706578656c732d746563686e6f62756c6b612d323930393236312e6a7067, 'Dosen', 'Rp. 500.000 - Rp. 1.000.000');
 
 --
 -- Indexes for dumped tables
@@ -128,22 +164,6 @@ ALTER TABLE `santri`
 ALTER TABLE `wali`
   ADD PRIMARY KEY (`id_wali`),
   ADD KEY `wali_ibfk_1` (`id_santri`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `pendidikan`
---
-ALTER TABLE `pendidikan`
-  MODIFY `id_pendidikan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `wali`
---
-ALTER TABLE `wali`
-  MODIFY `id_wali` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

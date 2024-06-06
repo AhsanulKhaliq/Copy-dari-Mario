@@ -5,7 +5,7 @@ if(isset($_GET['id_santri'])){
     $objSantri->id_santri = $_GET['id_santri'];
     $objSantri->DeleteSantri();
     echo "<script> alert('$objSantri->message'); </script>";
-    echo "<script>window.location = 'index.php?p=listSantri'</script>";
+    echo "<script>window.location = 'index.php?p=listsantri'</script>";
 } else {
     echo '<script>window.history.back()</script>';
 }

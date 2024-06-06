@@ -17,6 +17,7 @@ if(isset($_POST['btnSubmit'])){
     $santri->w_job = $_POST['w_job'];
     $santri->w_salary = $_POST['w_salary'];
     
+    $santri->id_pendidikan = $_POST['id_pendidikan'];
     $santri->p_lastSchool = $_POST['p_lastSchool'];
     $santri->p_certificate = $_POST['p_certificate'];
     $santri->p_transcript = $_POST['p_transcript'];
@@ -32,8 +33,10 @@ if(isset($_POST['btnSubmit'])){
         echo '<script> window.location = "index.php?p=listSantri";</script>';
     }
 } else if (isset($_GET['id_santri'])){
-        $santri->ssn = $_GET['id_santri'];
+        $santri->id_santri = $_GET['id_santri'];
         $santri->SelectOneSantri();
+        $santri->SelectPendidikan();
+        $santri->SelectWali();
     }
 ?>
 <h2>Biodata Calon Santri</h2>
@@ -44,7 +47,7 @@ if(isset($_POST['btnSubmit'])){
       <input type="text" class="form-control" value="<?php echo $santri->s_fullName; ?>" placeholder="Nama sesuai dengan Ijazah terakhir" name="s_fullName">
     </div>
     <div class="col-sm">
-      <label for="id_santri" class="form-label">Nomor Induk Siswa Nasional</label>
+      <label for="id_santri" class="form-label">Nomor Induk Kependudukan</label>
       <input type="text" class="form-control" value="<?php echo $santri->id_santri; ?>" name="id_santri">
     </div>
   </div>
@@ -52,24 +55,24 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="inputTempatLahir" class="form-label">Tempat Lahir</label>
-      <input type="text" class="form-control" name="s_bodPlace">
+      <input type="text" class="form-control" name="s_bodPlace" value="<?php echo $santri->s_bodPlace; ?>">
     </div>
 
     <div class="col-sm">
       <label for="inputTanggalLahir" class="form-label">Tanggal Lahir</label>
-      <input type="date" class="form-control" id="inputTanggalLahir" name="s_BOD">
+      <input type="date" class="form-control" id="inputTanggalLahir" name="s_BOD" value="<?php echo $santri->s_BOD; ?>">
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <label for="inputAlamat" class="form-label">Alamat Lengkap</label>
-      <input type="text" class="form-control" name="s_address" placeholder="Sesuai Kartu Keluarga" style="height: 100px">
+      <input type="text" class="form-control" name="s_address" placeholder="Sesuai Kartu Keluarga" style="height: 100px" value="<?php echo $santri->s_address; ?>">
     </div>
 
     <div class="col-md-6">
       <label for="pasFoto" class="form-label">Masukkan Pas Foto</label>
-      <input class="form-control" type="file" id="pasFoto" style="height: 100px" name="s_photo">
+      <input class="form-control" type="file" id="pasFoto" style="height: 100px" name="s_photo" value="<?php echo $santri->s_photo; ?>">
     </div>
   </div>
 
@@ -79,26 +82,26 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
   <div class="col-sm">
       <label for="inputNikWali" class="form-label">Nomor Induk Kependudukan</label>
-      <input type="text" class="form-control" placeholder="NIK" name="id_wali">
+      <input type="text" class="form-control" placeholder="NIK" name="id_wali" value="<?php echo $santri->id_wali; ?>">
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm">
       <label for="inputNamaWali" class="form-label">Nama Lengkap Wali</label>
-      <input type="text" class="form-control" placeholder="Nama sesuai dengan Kartu Tanda Penduduk" name="w_fullName">
+      <input type="text" class="form-control" placeholder="Nama sesuai dengan Kartu Tanda Penduduk" name="w_fullName" value="<?php echo $santri->w_fullName; ?>">
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm">
       <label for="inputEmail" class="form-label">Email</label>
-      <input type="email" class="form-control" name="w_email" placeholder="Masukkan email wali">
+      <input type="email" class="form-control" name="w_email" placeholder="Masukkan email wali" value="<?php echo $santri->w_email; ?>">
     </div>
 
     <div class="col-sm">
       <label for="inputKontak" class="form-label">Nomor Kontak</label>
-      <input type="tel" class="form-control" id="inputKontak" name="w_phone" placeholder="Masukkan nomor kontak wali" pattern="[0-9]{10,12}" minlength="10" maxlength="12">
+      <input type="tel" class="form-control" id="inputKontak" name="w_phone" placeholder="Masukkan nomor kontak wali" pattern="[0-9]{10,12}" minlength="10" maxlength="12" value="<?php echo $santri->w_phone; ?>">
     </div>
   </div>
 
@@ -138,7 +141,7 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="fileKK" class="form-label">Upload Kartu Keluarga</label>
-      <input class="form-control" type="file" name="w_familyRegist" style="height: 100px">
+      <input class="form-control" type="file" name="w_familyRegist" style="height: 100px" value="<?php echo $santri->w_familyRegist; ?>">
     </div>
   </div>
   
@@ -153,16 +156,20 @@ if(isset($_POST['btnSubmit'])){
         <option value="SMP/MTs">Sekolah Menengah Pertama/Madrasah Tsanawiyah</option>
       </select>
     </div>
+    <div class="col-sm">
+      <label for="id_santri" class="form-label">Nomor Induk Siswa Nasional</label>
+      <input type="text" class="form-control" name="id_pendidikan" value="<?php echo $santri->id_pendidikan; ?>">
+    </div>  
   </div>
 
   <div class="row">
     <div class="col-sm">
       <label for="p_certificate" class="form-label">Upload Ijazah Terakhir</label>
-      <input class="form-control" type="file" name="p_certificate" style="height: 100px">
+      <input class="form-control" type="file" name="p_certificate" style="height: 100px" value="<?php echo $santri->p_certificate; ?>">
     </div>
     <div class="col-sm">
       <label for="p_transcript" class="form-label">Upload Transkrip Nilai</label>
-      <input class="form-control" type="file" name="p_transcript" style="height: 100px">
+      <input class="form-control" type="file" name="p_transcript" style="height: 100px" value="<?php echo $santri->p_transcript; ?>">
     </div>
   </div>
 

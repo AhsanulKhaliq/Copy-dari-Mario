@@ -17,6 +17,7 @@
         private $w_job = '';
         private $w_salary = '';
 
+        private $id_pendidikan = '';
         private $p_lastSchool = '';
         private $p_certificate = '';
         private $p_transcript = '';
@@ -97,11 +98,13 @@
             }
                 
             // Insert into pendidikan table
-            $sql3 = "INSERT INTO pendidikan(id_santri,
+            $sql3 = "INSERT INTO pendidikan(id_pendidikan,
+                                        id_santri,
                                         p_lastSchool,
                                         p_certificate,
                                         p_transcript)
-                                    VALUES('$this->id_santri',
+                                    VALUES('$this->id_pendidikan',
+                                    '$this->id_santri',
                                     '$this->p_lastSchool',
                                     '$this->p_certificate',
                                     '$this->p_transcript')";
@@ -170,8 +173,7 @@
             return $arrResult;
         }
 
-        public function SelectOneSantri()
-        {
+        public function SelectOneSantri(){
             $sql = "SELECT * FROM santri WHERE id_santri = '$this->id_santri'";
             $resultOne = mysqli_query($this->connection, $sql);
 
@@ -179,23 +181,46 @@
             {
                     $this->hasil = true;
                     $data= mysqli_fetch_assoc($resultOne);
+                    $this->id_santri = $data['id_santri'];
                     $this->s_fullName = $data['s_fullName'];
                     $this->s_address = $data['s_address'];
                     $this->s_bodPlace = $data['s_bodPlace'];
                     $this->s_BOD = $data['s_BOD'];
                     $this->s_photo = $data['s_photo'];
-
-                    $this->w_fullName = $data['w_fullName'];
-                    $this->w_email = $data['w_email'];
-                    $this->w_phone = $data['w_phone'];
-                    $this->w_familyRegist = $data['w_familyRegist'];
-                    $this->w_job = $data['w_job'];
-                    $this->w_salary = $data['w_salary'];
-
-                    $this->p_lastSchool = $data['p_lastSchool'];
-                    $this->p_certificate = $data['p_certificate'];
-                    $this->p_transcript = $data['p_transcript'];
             }
+        }
+
+        public function SelectWali(){
+            $sql3 = "SELECT * FROM pendidikan WHERE id_santri = '$this->id_santri'";
+                            $resultThree = mysqli_query($this->connection, $sql3);
+        
+                            if (mysqli_num_rows($resultThree) == 1) 
+                            {
+                                $this->hasil = true;
+                                $data= mysqli_fetch_assoc($resultThree);
+                                $this->id_pendidikan = $data['id_pendidikan'];
+                                $this->p_lastSchool = $data['p_lastSchool'];
+                                $this->p_certificate = $data['p_certificate'];
+                                $this->p_transcript = $data['p_transcript'];
+                            }
+        }
+
+        public function SelectPendidikan(){
+            $sql2 = "SELECT * FROM wali WHERE id_santri = '$this->id_santri'";
+                    $resultTwo = mysqli_query($this->connection, $sql2);
+        
+                    if (mysqli_num_rows($resultTwo) == 1) 
+                    {
+                            $this->hasil = true;
+                            $data= mysqli_fetch_assoc($resultTwo);                    
+                            $this->id_wali = $data['id_wali'];
+                            $this->w_fullName = $data['w_fullName'];
+                            $this->w_email = $data['w_email'];
+                            $this->w_phone = $data['w_phone'];
+                            $this->w_familyRegist = $data['w_familyRegist'];
+                            $this->w_job = $data['w_job'];
+                            $this->w_salary = $data['w_salary'];
+                    }
         }
     }
 
