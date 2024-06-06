@@ -41,11 +41,11 @@ if(isset($_POST['btnSubmit'])){
   <div class="row">
     <div class="col-sm">
       <label for="inputNama" class="form-label">Nama Lengkap</label>
-      <input type="text" class="form-control" placeholder="Nama sesuai dengan Ijazah terakhir" name="s_fullName">
+      <input type="text" class="form-control" value="<?php echo $santri->s_fullName; ?>" placeholder="Nama sesuai dengan Ijazah terakhir" name="s_fullName">
     </div>
     <div class="col-sm">
       <label for="id_santri" class="form-label">Nomor Induk Siswa Nasional</label>
-      <input type="text" class="form-control" placeholder="NISN" name="id_santri">
+      <input type="text" class="form-control" value="<?php echo $santri->id_santri; ?>" name="id_santri">
     </div>
   </div>
 
@@ -126,11 +126,11 @@ if(isset($_POST['btnSubmit'])){
       <label for="penghasilan">Penghasilan Wali</label>
       <select class="form-control" name="w_salary">
         <option value="pilihGaji">Pilih Penghasilan Wali</option>
-        <option value="1">'<'Rp. 500.000</option>
-        <option value="1">Rp. 500.000 - Rp. 1.000.000</option>
-        <option value="1">Rp. 1.000.000 - Rp. 2.000.000</option>
-        <option value="1">Rp. 2.000.000 - Rp. 3.000.000</option>
-        <option value="1">'>'Rp. 3.000.000</option>
+        <option value="< Rp.500.000"><-Rp. 500.000</option>
+        <option value="Rp. 500.000 - Rp. 1.000.000">Rp. 500.000 - Rp. 1.000.000</option>
+        <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+        <option value="Rp. 2.000.000 - Rp. 3.000.000">Rp. 2.000.000 - Rp. 3.000.000</option>
+        <option value="> Rp. 3.000.000">->Rp. 3.000.000</option>
       </select>
     </div>
   </div>
@@ -151,7 +151,6 @@ if(isset($_POST['btnSubmit'])){
         <option selected>Pilih Pendidikan Terakhir</option>
         <option value="SD/MI">Sekolah Dasar/Madrasah Ibtidaiyah</option>
         <option value="SMP/MTs">Sekolah Menengah Pertama/Madrasah Tsanawiyah</option>
-        <option value="SMA/MA">Sekolah Menengah Atas/Madrasah Aliyah</option>
       </select>
     </div>
   </div>

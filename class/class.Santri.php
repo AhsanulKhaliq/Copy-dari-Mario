@@ -9,7 +9,7 @@
         private $s_address = '';
         private $s_photo = '';
         
-        private $w_wali = '';
+        private $id_wali = '';
         private $w_email = '';
         private $w_phone = '';
         private $w_familyRegist = '';
@@ -42,8 +42,32 @@
 
         public function tambahSantri()
         {
-            // Insert into wali table
+            $sql = "INSERT INTO santri(id_santri, 
+                                        s_fullName, 
+                                        s_bodPlace,
+                                        s_BOD, 
+                                        s_address,
+                                        s_photo)
+                                    VALUES('$this->id_santri',
+                                    '$this->s_fullName',
+                                    '$this->s_bodPlace',
+                                    '$this->s_BOD',
+                                    '$this->s_address',
+                                    '$this->s_photo')";
+        
+            $this->hasil1 = mysqli_query($this->connection, $sql);
+        
+            if ($this->hasil1) 
+            {
+                $this->message = 'Data santri berhasil ditambahkan!';
+            }
+            else
+            {
+                $this->message = 'Data santri gagal ditambahkan!';
+            }
+
             $sql2 = "INSERT INTO wali(id_wali,
+                                        id_santri,
                                         w_fullName,
                                         w_address,
                                         w_phone,
@@ -51,8 +75,8 @@
                                         w_familyRegist,
                                         w_job,
                                         w_salary)
-                                    VALUES(NULL,
-                                    '$this->w_wali',
+                                    VALUES('$this->id_wali',
+                                    '$this->id_santri',
                                     '$this->w_fullName',
                                     '$this->s_address',
                                     '$this->w_phone',
@@ -61,68 +85,36 @@
                                     '$this->w_job',
                                     '$this->w_salary')";
             
-            $this->hasil = mysqli_query($this->connection, $sql2);
+            $this->hasil2 = mysqli_query($this->connection, $sql2);
         
-            if ($this->hasil) 
+            if ($this->hasil2) 
             {
-                $id_wali = mysqli_insert_id($this->connection); // Mendapatkan id_wali yang baru saja diinsert
-                $this->message = 'Data berhasil ditambahkan!';
+                $this->message = 'Data wali berhasil ditambahkan!';
             }
             else
             {
-                $this->message = 'Data gagal ditambahkan!';
-                return; // Stop execution if the second query fails
+                $this->message = 'Data wali gagal ditambahkan!';
             }
-        
-            // Insert into santri table menggunakan id_wali yang baru saja diinsert
-            $sql = "INSERT INTO santri(id_santri, 
-                                        s_fullName, 
-                                        s_bodPlace,
-                                        s_BOD, 
-                                        s_address,
-                                        s_photo,
-                                        id_wali)  -- Pastikan id_wali ada di tabel santri
-                                    VALUES('$this->id_santri',
-                                    '$this->s_fullName',
-                                    '$this->s_bodPlace',
-                                    '$this->s_BOD',
-                                    '$this->s_address',
-                                    '$this->s_photo',
-                                    '$id_wali')";
-        
-            $this->hasil = mysqli_query($this->connection, $sql);
-        
-            if ($this->hasil) 
-            {
-                $this->message = 'Data berhasil ditambahkan!';
-            }
-            else
-            {
-                $this->message = 'Data gagal ditambahkan!';
-                return; // Stop execution if the first query fails
-            }
-        
+                
             // Insert into pendidikan table
-            $sql3 = "INSERT INTO pendidikan(id_pendidikan,
-                                        id_santri,
+            $sql3 = "INSERT INTO pendidikan(id_santri,
                                         p_lastSchool,
                                         p_certificate,
                                         p_transcript)
-                                    VALUES(NULL,
-                                    '$this->id_santri',
+                                    VALUES('$this->id_santri',
                                     '$this->p_lastSchool',
                                     '$this->p_certificate',
                                     '$this->p_transcript')";
             
-            $this->hasil = mysqli_query($this->connection, $sql3);
+            $this->hasil3 = mysqli_query($this->connection, $sql3);
         
-            if ($this->hasil) 
+            if ($this->hasil3) 
             {
-                $this->message = 'Data berhasil ditambahkan!';
+                $this->message = 'Data pendidikan berhasil ditambahkan!';
             }
             else
             {
-                $this->message = 'Data gagal ditambahkan!';
+                $this->message = 'Data pendidikan gagal ditambahkan!';
             }
         }
         
