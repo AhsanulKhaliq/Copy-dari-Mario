@@ -10,47 +10,57 @@
         $objUser->ValidateEmail($email);
 
         if($objUser->hasil){
-        
-            $ismatch = password_verify($password, $objUser->password);
-            if($ismatch){
+            if($password === $objUser->password){
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-
                 $_SESSION["userid"]= $objUser->userid;
-                $_SESSION["role"]= $objUser->role;
-                $_SESSION["a_username"]= $objUser->name;
-                $_SESSION["a_password"]= $objUser->email;
+                $_SESSION["a_username"]= $objUser->email;
+                $_SESSION["a_password"]= $objUser->password;
                 
-                echo "<script>alert('Login sukses');</script>";
-                
-                if($objUser->role == 'admin')
-                    echo '<script>window.location = "adminRegist.php";</script>';
-                else if($objUser->role == 'index')
-                    echo '<script>window.location = "index.php";</script>';
-                
-        }
-
-            else{
-                    echo "<script>alert('Password tidak sesuai');</script>";
-                }
+                echo "<script>
+                Swal.fire({
+                    title: 'Login Sukses',
+                    text: 'Anda berhasil login!',
+                    icon: 'success'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = 'pages/adminRegist.php';
+                    }
+                });
+                </script>";
+            } else {
+                echo "<script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Password tidak sesuai',
+                    icon: 'error'
+                });
+                </script>";
             }
-            else{
-                echo "<script>alert('Email tidak terdaftar');</script>";
-            }
+        } else {
+            echo "<script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Email tidak terdaftar',
+                icon: 'error'
+            });
+            </script>";
         }
-
+    
+    }
 ?>
+
 <h1>Ahlan Wa Sahlan</h1>
-<form>
+<form method="POST">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Username</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username" name="a_username">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username" name="a_username" required>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="a_password">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="a_password" required>
   </div>
-  <button type="submit" class="btn btn-primary ">Submit</button>
-  <button type="cancel" class="btn btn-primary">Cancel</button>
+  <button type="submit" class="btn btn-primary " name="btnLogin">Submit</button>
+  <a class="btn btn-danger" href="index.php">Cancel</a>
 </form>

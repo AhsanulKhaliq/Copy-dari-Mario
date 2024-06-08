@@ -5,7 +5,6 @@ class User extends Connection{
     private $userid = 0;
     private $email = 'a_username';
     private $password = 'a_password';
-    private $role = '';
     private $emp;
 
     private $hasil = false;
@@ -25,8 +24,8 @@ class User extends Connection{
 
 
     public function AddAdmin(){
-        $sql = "INSERT INTO admin (a_username, a_password, name, role)
-                values ('$this->email', '$this->password', '$this->role')";
+        $sql = "INSERT INTO admin (a_username, a_password)
+                values ('$this->email', '$this->password')";
         $this->hasil = mysqli_query($this->connection, $sql);
         
         if($this->hasil)
@@ -42,11 +41,11 @@ class User extends Connection{
                 if (mysqli_num_rows ($result) == 1){
                     $this->hasil = true;
                     $data = mysqli_fetch_assoc($result);
-                    $this->userid = $data['userid'];
                     $this->password = $data['a_password'];
-                    $this->name=$data['name'];
                     $this->email=$data['a_username'];
-                    $this->role=$data['role'];
+                    }
+                    else{
+                        $this->hasil = false;
                     }
         }
         }
