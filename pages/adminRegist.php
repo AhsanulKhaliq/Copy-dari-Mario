@@ -9,11 +9,14 @@
 </head>
 <body>
   <div class="d-flex">
-    <nav class="d-flex flex-column bg-light p-3" style="background-color: #B6C4B6; font-family: Montserrat; width: 250px; height: 100vh;">
-    <a class="navbar-brand mb-3" href="#">
-    <img src="path_to_admin_icon.png" alt="Admin" style="width: 30px; height: 30px;">
+    <nav class="d-flex flex-column p-3" style="background-color: #B6C4B6; font-family: Montserrat; width: 250px; height: 100vh;">
+      <a class="navbar-brand mb-3" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
         Admin
-    </a>
+      </a>
       <a class="nav-link" href="index.php?p=data_santri">Data Santri</a>
       <a class="nav-link" href="index.php?p=data_guru">Data Guru</a>
       <a class="nav-link" href="index.php?p=galeri">Galeri</a>
@@ -51,23 +54,15 @@
             <tr>
               <th>No.</th>
               <th>Nama Calon Santri</th>
-              <th>TTL</th>
               <th>Alamat</th>
-              <th>Pendidikan Terakhir</th>
-              <th>Nama Wali</th>
-              <th>No. Telepon Wali</th>
-              <th>Pas Foto</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>Nama Calon Santri</td>
-              <td>TTL</td>
               <td>Alamat</td>
-              <td>Pendidikan Terakhir</td>
-              <td>Nama Wali</td>
-              <td>No. Telepon Wali</td>
               <td>
                 <button class="btn btn-success btn-sm" id="acceptBtn">Terima</button>
                 <button class="btn btn-danger btn-sm">Tolak</button>
@@ -88,7 +83,7 @@
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya!'
+        confirmButtonText: 'Ya'
       }).then((result) => {
         if (result.isConfirmed) {
           window.location = 'logout.php';

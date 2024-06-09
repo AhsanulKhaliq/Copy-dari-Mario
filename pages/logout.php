@@ -16,7 +16,7 @@ echo "<!DOCTYPE html>
             text: 'Anda berhasil keluar.',
             icon: 'Sukses'
         }).then((result) => {
-            window.location.href ='index.php';
+            window.location.href ='../index.php';
         });
     </script>
 </body>
