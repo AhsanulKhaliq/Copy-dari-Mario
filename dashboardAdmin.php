@@ -34,7 +34,7 @@
 
             $this->hasil = mysqli_query($this->connection, $sql);
 
-            if ($this->hasil) 
+            if ($this->hasil)
             {
                 $this->message = 'Data berhasil ditambahkan!';
             }

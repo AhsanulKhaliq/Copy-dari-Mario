@@ -16,7 +16,6 @@
             <a class="navbar-brand" href="index.php?p=home">Darul Taqwa</a>
             <div class="d-flex align-middle">
                 <a class="nav-link m-2" href="index.php?p=fasilitas">Fasilitas</a>
-                <a class="nav-link m-2" href="index.php?p=berita">Berita</a>
                 <a class="nav-link m-2" href="index.php?p=eskul">Ekstrakurikuler</a>
                 <a class="nav-link m-2" href="index.php?p=profil">Profil</a>
                 <a class="nav-link m-2" href="index.php?p=biayapendaftaran">Biaya Pendaftaran</a>
