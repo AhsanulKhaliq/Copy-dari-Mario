@@ -36,3 +36,4 @@ require_once('authorization_admin.php');
     }
     ?>
 </table>
+<a class="btn btn-primary" href="pages/adminRegist.php">Kembali</a>

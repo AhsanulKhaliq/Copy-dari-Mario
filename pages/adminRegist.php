@@ -20,7 +20,7 @@ require_once('authorization_admin.php');
         </svg>
         <?php echo $_SESSION["role"]?>
       </a>
-      <a class="nav-link" href="index.php?p=data_santri">Data Santri</a>
+      <a class="nav-link" href="../index.php?p=listsantri">Data Santri</a>
       <a class="nav-link" href="index.php?p=data_guru">Data Guru</a>
       <a class="nav-link" href="index.php?p=galeri">Galeri</a>
       <a class="nav-link mt-auto btn btn-danger text-white" id="logoutBtn">Logout</a>
