@@ -189,23 +189,8 @@
                     $this->s_photo = $data['s_photo'];
             }
         }
-
+    
         public function SelectWali(){
-            $sql3 = "SELECT * FROM pendidikan WHERE id_santri = '$this->id_santri'";
-                            $resultThree = mysqli_query($this->connection, $sql3);
-        
-                            if (mysqli_num_rows($resultThree) == 1) 
-                            {
-                                $this->hasil = true;
-                                $data= mysqli_fetch_assoc($resultThree);
-                                $this->id_pendidikan = $data['id_pendidikan'];
-                                $this->p_lastSchool = $data['p_lastSchool'];
-                                $this->p_certificate = $data['p_certificate'];
-                                $this->p_transcript = $data['p_transcript'];
-                            }
-        }
-
-        public function SelectPendidikan(){
             $sql2 = "SELECT * FROM wali WHERE id_santri = '$this->id_santri'";
                     $resultTwo = mysqli_query($this->connection, $sql2);
         
@@ -222,6 +207,21 @@
                             $this->w_salary = $data['w_salary'];
                     }
         }
+        public function SelectPendidikan(){
+            $sql3 = "SELECT * FROM pendidikan WHERE id_santri = '$this->id_santri'";
+                            $resultThree = mysqli_query($this->connection, $sql3);
+        
+                            if (mysqli_num_rows($resultThree) == 1) 
+                            {
+                                $this->hasil = true;
+                                $data= mysqli_fetch_assoc($resultThree);
+                                $this->id_pendidikan = $data['id_pendidikan'];
+                                $this->p_lastSchool = $data['p_lastSchool'];
+                                $this->p_certificate = $data['p_certificate'];
+                                $this->p_transcript = $data['p_transcript'];
+                            }
+        }
+
     }
 
 ?>
