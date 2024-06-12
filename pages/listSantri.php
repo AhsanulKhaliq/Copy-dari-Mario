@@ -1,3 +1,6 @@
+<?php
+require_once('authorization_admin.php');    
+?>
 <h4 class="title">
     <span class="text">
         <strong>Daftar Calon Santri</strong>

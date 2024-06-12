@@ -17,7 +17,8 @@
                 $_SESSION["userid"]= $objUser->userid;
                 $_SESSION["a_username"]= $objUser->email;
                 $_SESSION["a_password"]= $objUser->password;
-                
+                $_SESSION["role"]= $objUser->role;
+
                 echo "<script>
                 Swal.fire({
                     title: 'Login Sukses',

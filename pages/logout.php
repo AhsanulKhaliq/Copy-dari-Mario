@@ -21,3 +21,4 @@ echo "<!DOCTYPE html>
     </script>
 </body>
 </html>";
+?>

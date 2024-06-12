@@ -1,3 +1,6 @@
+<?php 
+require_once('authorization_admin.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
         </svg>
-        Admin
+        <?php echo $_SESSION["role"]?>
       </a>
       <a class="nav-link" href="index.php?p=data_santri">Data Santri</a>
       <a class="nav-link" href="index.php?p=data_guru">Data Guru</a>
@@ -32,7 +35,7 @@
               <p class="card-text">Jumlah Santri: <b>00 Santri</b></p>
               <p class="card-text">Menunggu Approval: <b>01 Data</b></p>
               <p class="card-text">Diterima: <b>01 Data</b></p>
-              <a href="#" class="btn btn-warning">Tinjau</a>
+              <a href="../index.php?p=listsantri" class="btn btn-warning">Tinjau</a>
             </div>
           </div>
         </div>
@@ -41,7 +44,7 @@
             <div class="card-body">
               <h5 class="card-title">Daftar Manual</h5>
               <p class="card-text">Bagi pendaftar offline, jika seluruh berkas telah lengkap silahkan daftarkan manual (melalui admin).</p>
-              <a href="#" class="btn btn-success">Daftar</a>
+              <a href="../index.php?p=santri" class="btn btn-success">Daftar</a>
             </div>
           </div>
         </div>
